@@ -18,6 +18,6 @@ var root={
 
 graphql(schema,
     `{
-        name,
+    name,
     gender
      }`, root).then(response=>console.log(response)).catch(err=>console.log(err));
