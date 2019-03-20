@@ -12,9 +12,11 @@ type Query{
 `);   //making our query
 var root={
     name: ()=>{
-            let names=fakeData.user.filter(element=>element.name);
-            return fakeData.user;
-           
+        let names=[];
+            for(let i=0;i<fakeData.user.length;i++){
+                names.push(fakeData.user[i].name);
+            }
+            return names;
     },
     age: ()=>{
 
@@ -25,7 +27,6 @@ app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
     graphiql: true
-    
 }));
 app.listen(1234, ()=>{
     console.log('server running at port 1234');
