@@ -9,6 +9,10 @@ type Query{
     age: Int,
     city: String
 }
+
+type Mutation {
+    createUser(name: String!, age: Int!, city: String!): String
+}
 `);   //making our query
 var root={
     name: ()=>{
@@ -20,7 +24,14 @@ var root={
     },
     age: ()=>{
 
+    },
+    createUser: ({name,age,city})=>{
+        //console.log('name',name);
+        let object={name,age,city};
+        fakeData.user.push(object);
+        return "user made";
     }
+
 }
 var app=express();
 app.use('/graphql', graphqlHTTP({
