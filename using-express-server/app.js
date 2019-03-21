@@ -6,7 +6,7 @@ const fakeData=require('./fakeDB');
 const schema=buildSchema(`
 type Query{
     name: [String],
-    age: Int,
+    age: [Int],
     city: String
 }
 
@@ -23,7 +23,11 @@ var root={
             return names;
     },
     age: ()=>{
-
+        let ages=[];
+            for(let i=0;i<fakeData.user.length;i++){
+                ages.push(fakeData.user[i].age);
+            }
+            return ages;
     },
     createUser: ({name,age,city})=>{
         //console.log('name',name);
