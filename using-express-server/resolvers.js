@@ -14,6 +14,9 @@ const resolvers={
                     ages.push(fakeData.user[i].age);
                 }
                 return ages;
+        },
+        id: ()=>{
+            return 1;
         }
     },
     Mutation: {
